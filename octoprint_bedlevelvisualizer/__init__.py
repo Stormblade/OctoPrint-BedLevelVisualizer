@@ -255,6 +255,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
                     self.mesh = np.subtract(self.mesh, self.mesh[len(self.mesh[0])/2,len(self.mesh)/2], dtype=np.float, casting='unsafe').tolist()
                 else:
                     self.mesh = np.subtract(self.mesh, self.mesh[0,0], dtype=np.float, casting='unsafe').tolist()
+                self.mesh = np.negative(self.mesh)
 
             if int(self._settings.get(["rotation"])) > 0:
                 self._bedlevelvisualizer_logger.debug("rotating mesh by %s" % self._settings.get(["rotation"]))
